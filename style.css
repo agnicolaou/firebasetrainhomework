@@ -1,0 +1,28 @@
+.card-header {
+    font-weight: bold;
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size: 40px;
+    background-color: hsl(252, 92%, 14%);
+    color: #f7f2b9;
+}
+
+hr {
+    border-color: red;
+    border-width: thick;
+}
+
+div.card {
+    background-color: rgb(241, 239, 239);
+}
+
+label,
+th {
+    font-weight: bold;
+    color:  hsl(252, 92%, 14%);;
+}
+
+.btn {
+    background-color: hsl(252, 92%, 14%);
+    font-weight: bolder;
+    margin-top: 20px;
+}

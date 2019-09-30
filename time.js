@@ -71,3 +71,32 @@ trainDB.ref().on("child_added", function (childSnapshot, prevChildKey) {
     var maxMoment = moment.max(moment(), trainTime);
     var mins;
     var board;
+
+
+    if (maxMoment === trainTime) {
+        board = trainTime.format("hh:mm A");
+        mins = trainTime.diff(moment(), "minutes");
+      }
+      else {
+        var diff = moment().diff(trainTime, "minutes");
+        var remainder = diff % newFrequency;
+        mins = newFrequency - remainder;
+    
+        board = moment()
+          .add(mins, "m")
+          .format("hh:mm A");
+      }
+      console.log("mins:", mins);
+      console.log("board:", board);
+    
+      // New data appeneded into html
+      $("#schedule > tbody").append(
+        $("<tr>").append(
+          $("<td>").text(newName),
+          $("<td>").text(newDestination),
+          $("<td>").text(newFrequency),
+          $("<td>").text(board),
+          $("<td>").text(mins)
+        )
+      );
+    });

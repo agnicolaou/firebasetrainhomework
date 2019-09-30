@@ -48,9 +48,26 @@ $("#add-button").on("click", function (event) {
     // Alert
     alert("You added a new train!");
 
-      // Field input reset to empty
-  $("#train-name-input").val("");
-  $("#destination-input").val("");
-  $("#first-train-input").val("");
-  $("#frequency-input").val("");
+    // Field input reset to empty
+    $("#train-name-input").val("");
+    $("#destination-input").val("");
+    $("#first-train-input").val("");
+    $("#frequency-input").val("");
 });
+
+// Adding data to database
+trainDB.ref().on("child_added", function (childSnapshot, prevChildKey) {
+    console.log(childSnapshot.val());
+
+    var newName = childSnapshot.val().name;
+    var newDestination = childSnapshot.val().destination;
+    var newFrequency = childSnapshot.val().frequency;
+    var newTime = childSnapshot.val().trainTime;
+
+    var arrival = newTime.split(":");
+    var trainTime = moment()
+        .hours(arrival[0])
+        .minutes(arrival[1]);
+    var maxMoment = moment.max(moment(), trainTime);
+    var mins;
+    var board;

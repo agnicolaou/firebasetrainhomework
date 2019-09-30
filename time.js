@@ -47,3 +47,10 @@ $("#add-button").on("click", function (event) {
 
     // Alert
     alert("You added a new train!");
+
+      // Field input reset to empty
+  $("#train-name-input").val("");
+  $("#destination-input").val("");
+  $("#first-train-input").val("");
+  $("#frequency-input").val("");
+});
